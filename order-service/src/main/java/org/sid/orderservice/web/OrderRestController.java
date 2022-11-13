@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import org.sid.orderservice.entities.Order;
 import org.sid.orderservice.repositories.OrderRepository;
 import org.sid.orderservice.repositories.ProductItemRepository;
-import org.sid.orderservice.service.CustomerRestClientService;
-import org.sid.orderservice.service.InventoryRestClientService;
+import org.sid.orderservice.services.CustomerRestClientService;
+import org.sid.orderservice.services.InventoryRestClientService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor

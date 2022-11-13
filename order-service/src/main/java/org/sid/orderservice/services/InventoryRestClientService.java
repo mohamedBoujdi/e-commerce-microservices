@@ -1,15 +1,17 @@
-package org.sid.orderservice.service;
+package org.sid.orderservice.services;
 
-import org.sid.orderservice.entities.Customer;
 import org.sid.orderservice.entities.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.logging.Logger;
+
 
 @FeignClient(name = "inventory-service")
 public interface InventoryRestClientService {
+    Logger logger = Logger.getLogger(InventoryRestClientService.class.getName());
     @GetMapping("/products/{id}?projection=fullProduct")
     public Product getProductById(@PathVariable("id") Long productId);
     @GetMapping("/products?projection=fullProduct")

@@ -1,9 +1,0 @@
-server:
-  port: 8083
-spring:
-  application:
-    name: order-service
-  config:
-    import: optional:configserver:http://localhost:8888
-    #optional :is used to avoid the error if the config server is not running
-
