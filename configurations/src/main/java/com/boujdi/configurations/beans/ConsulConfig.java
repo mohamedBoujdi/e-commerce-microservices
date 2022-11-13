@@ -1,19 +1,13 @@
-package com.boujdi.configurations.entities;
-
-import lombok.AllArgsConstructor;
+package com.boujdi.configurations.beans;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-@Component
+
 @ConfigurationProperties("token") // to bind the properties to this class instead of @Value("${token.accessTokenTimeout}")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Component
 public class ConsulConfig {
     private long accessTokenTimeout;
     private long refreshTokenTimeout;
-
-
 }
