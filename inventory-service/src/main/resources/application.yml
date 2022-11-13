@@ -1,0 +1,10 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: inventory-service
+  config:
+    import: optional:configserver:http://localhost:8888
+    #optional :is used to avoid the error if the config server is not running
+    #the config id obligatory just for the config server
+

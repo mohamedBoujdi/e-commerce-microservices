@@ -1,0 +1,30 @@
+server:
+  port : 8081
+spring:
+  application:
+    name: customer-service
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  datasource:
+    #create a datasource for customer service if not already created
+    url: jdbc:h2:mem:customer;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    url: jdbc:mysql://localhost:3306/customerdb?createDatabaseIfNotExist=true
+#    username: root
+#    password: root
+#    #new driver
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    jpa:
+#        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#        hibernate:
+#            ddl-auto: update
+#        show-sql: true
+  h2:
+    console:
+      enabled: true
+management:
+  endpoints:
+    web:
+        exposure:
+            include: "*"
+
