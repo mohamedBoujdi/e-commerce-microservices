@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
-@RepositoryRestResource // This annotation is used to expose the repository as a REST service
+@RepositoryRestResource
+// This annotation is used to expose the repository as a REST service
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
 
 }

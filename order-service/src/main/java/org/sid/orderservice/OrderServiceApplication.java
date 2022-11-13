@@ -40,20 +40,23 @@ public class OrderServiceApplication {
 			List<Customer> customers = customerRestClientService.getAllCustomers().getContent().stream().toList();
 			System.out.println("Customers: " + customers);
 			List<Product> products = productRestClientService.getPagedProducts().getContent().stream().toList();
-			System.out.println("Products: " + products);
+			//System.out.println("Products: " + products);//for debugging
 		    // orders for customers
-			 Long customerId = 1L;
 			Random random = new Random();
+			//orders for each customer
 			 for (int i = 0; i < 30; i++) {
 				 int randomIndex = random.nextInt(customers.size());
-				 Long id = customers.get(randomIndex).getId();
+				 Customer customer= (Customer) customers.get(randomIndex);
+				// System.out.println("Customer "+i+": " + customer); //for debugging
 				 Order order = Order.builder()
-						 .customerId(id)
+						 .customerId(customer.getId())
 						 .orderStatus(Math.random() < 0.5 ? OrderStatus.PAID : OrderStatus.DELIVERED)
 						 .orderDate(new Date())
 						 .customer(customers.get(randomIndex))
 						 .build();
+				// System.out.println("Order saved: " + order);//for debugging
 				 Order saved = orderRepository.save(order);
+				 // product items for orders
 				 for (Product product : products) {
 					 if (Math.random() < 0.4) {
 						 ProductItem productItem = ProductItem.builder()
